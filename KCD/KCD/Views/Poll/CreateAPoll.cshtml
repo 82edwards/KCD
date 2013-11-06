@@ -1,0 +1,27 @@
+﻿@model Model.Poll.Poll
+
+@{
+    ViewBag.Title = "CreateAPoll";
+}
+
+<h2>Create A Poll</h2>
+
+<table>
+    <tr>
+        <td>Question:</td>
+        <td>@Html.TextBox("Question")</td>
+    </tr>
+    <tr>
+        <td>How Many Answers?</td>
+        <td>@Html.TextBox("NumberOfAnswers")</td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <div id="Answers"></div>
+        </td>
+    </tr>
+</table>
+
+<script>
+    $('#NumberOfAnswers').val()
+</script>
