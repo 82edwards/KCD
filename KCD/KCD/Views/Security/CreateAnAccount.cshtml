@@ -1,4 +1,4 @@
-﻿
+﻿@model Model.Security.Account
 @{
     ViewBag.Title = "Create An Account";
 }
@@ -33,6 +33,14 @@
         </tr>
         <tr>
             <td>
+                <label>Gender:</label>
+            </td>
+            <td>
+                @Html.DropDownList("Gender")
+            </td>
+        </tr>
+        <tr>
+            <td>
                 <label>Company:</label>
             </td>
             <td>
@@ -44,7 +52,7 @@
                 <label>Recieve Emails:</label>
             </td>
             <td>
-                @Html.CheckBox("CanSendEmails")
+                @Html.CheckBox("CanSendEmails", true)
             </td>
         </tr>
         <tr>
@@ -52,7 +60,7 @@
                 <label>Contacted by Sponsers:</label>
             </td>
             <td>
-                @Html.CheckBox("CanBeContactedBySponsers")
+                @Html.CheckBox("CanBeContactedBySponsers", true)
             </td>
         </tr>
         <tr>
@@ -71,5 +79,12 @@
                 @Html.TextBox("PasswordConfirmation")
             </td>
         </tr>
+        <tr>
+            <td>
+                <input type="submit" id="btnSave" value="Submit" />
+            </td>
+            <td></td>
+        </tr>
     </table>
+    <!--Todo:  Integrate SSO tied to microsoft or google???-->
 </div>

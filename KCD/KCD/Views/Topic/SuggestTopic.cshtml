@@ -1,0 +1,32 @@
+﻿@model Model.Topic.Topic
+
+@{
+    ViewBag.Title = "Suggest A Topic";
+}
+
+
+<table>
+    <tr>
+        <td colspan="2">
+            <h2>@ViewBag.Title</h2>
+        </td>
+    </tr>
+    <tr>
+        <td>Title:</td>
+        <td>@Html.TextBox("Name")</td>
+    </tr>
+    <tr>
+        <td>Description</td>
+        <td>@Html.TextArea("Description")</td>
+    </tr>
+    <tr>
+        <td>Category:</td>
+        <td>@Html.TextArea("Category")</td>
+    </tr>
+    <tr>
+        <td>
+            <input type="submit" id="btnSubmit" />
+        </td>
+        <td></td>
+    </tr>
+</table>

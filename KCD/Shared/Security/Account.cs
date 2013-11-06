@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
-namespace Shared.Security
+namespace Model.Security
 {
     public class Account
     {
@@ -17,6 +18,23 @@ namespace Shared.Security
         public bool CanSendEmails { get; set; }
         public bool CanBeContactedBySponsers { get; set; }
         public string Password { get; set; }
+        public SelectList Gender
+        {
+            get
+            {
+                var genders = from GenderEnum s in Enum.GetValues(typeof(GenderEnum))
+                              select new { Value = s, Text = s.ToString() };
+                return new SelectList(genders, "Value", "Text");
+            }
+        }
         #endregion
+
+        private enum GenderEnum
+        {
+            Male = 1,
+            Female = 2,
+            Abstain = 3
+        }
     }
+
 }
