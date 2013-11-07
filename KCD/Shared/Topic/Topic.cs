@@ -16,7 +16,8 @@ namespace Model.Topic
         public DateTime SuggestedDate { get; set; }
         public DateTime DateCovered { get; set; }
         public int NumberOfVotes { get; set; }
-        public List<Category> Category { get; set; }        
+        public List<Category> Category { get; set; }
+        public List<Comment> Comments { get; set; }
         #endregion
     }
 }

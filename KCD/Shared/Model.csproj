@@ -46,6 +46,7 @@
     <Compile Include="Security\Account.cs" />
     <Compile Include="Security\User.cs" />
     <Compile Include="Topic\Category.cs" />
+    <Compile Include="Topic\Comment.cs" />
     <Compile Include="Topic\Topic.cs" />
   </ItemGroup>
   <ItemGroup />

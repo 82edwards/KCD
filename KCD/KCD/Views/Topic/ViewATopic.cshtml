@@ -1,0 +1,37 @@
+﻿@model Model.Topic.Topic
+
+@{
+    ViewBag.Title = "ViewATopic";
+}
+
+<h2>ViewATopic</h2>
+
+<table>
+    <tr>
+        <td>
+            <table>
+                <tr>
+                    <td>Title:</td>
+                    <td>@Html.TextBox("Title")</td>
+                </tr>
+                <tr>
+                    <td>Description:</td>
+                    <td>@Html.TextArea("Description")</td>
+                </tr>
+            </table>
+        </td>
+        <td>
+            <table>
+                <tr>
+                    <td>Up Arrow</td>
+                </tr>
+                <tr>
+                    <td>@Html.Label("Votes")</td>                    
+                </tr>
+                <tr>
+                    <td>Down Arrow</td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
