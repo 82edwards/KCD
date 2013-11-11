@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Model.Helper;
+using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,24 +19,68 @@ namespace Model.Security
         public string Company { get; set; }
         public bool CanSendEmails { get; set; }
         public bool CanBeContactedBySponsers { get; set; }
-        public string Password { get; set; }
-        public SelectList Gender
+        public List<PhoneNumber> PhoneNumbers { get; set; }
+        public int SelectedGender { get; set; }
+        public SelectList Genders
         {
             get
             {
-                var genders = from GenderEnum s in Enum.GetValues(typeof(GenderEnum))
-                              select new { Value = s, Text = s.ToString() };
+                var genders = Gender.Get();
                 return new SelectList(genders, "Value", "Text");
             }
         }
         #endregion
 
-        private enum GenderEnum
+        public int Create()
         {
-            Male = 1,
-            Female = 2,
-            Abstain = 3
+            using (var conn = Sql.GetSqlConnection())
+            {
+                conn.Open();
+                using (var cmd = new SqlCommand
+                {
+                    CommandText = "Security.CreateAccount",
+                    Connection = conn,
+                    Parameters = {                     
+                        new SqlParameter("@FirstName", FirstName),
+                        new SqlParameter("@LastName", LastName),
+                        new SqlParameter("@EmailAddress", EmailAddress),
+                        new SqlParameter("@Company", Company),
+                        new SqlParameter("@CanSendEmails", CanSendEmails),
+                        new SqlParameter("@CanBeContactedBySponsers", CanBeContactedBySponsers),
+                        new SqlParameter("@SelectedGender",SelectedGender)
+                }
+                })
+                    return Convert.ToInt32(cmd.ExecuteScalar());
+            }
         }
-    }
 
+        public void Update()
+        {
+            using (var conn = Sql.GetSqlConnection())
+            using (var cmd = new SqlCommand
+            {
+                CommandText = "Security.UpdateAccount",
+                Connection = conn,
+                Parameters = { 
+                    new SqlParameter("@AccountId", Id),
+                    new SqlParameter("@FirstName", FirstName),
+                    new SqlParameter("@LastName", LastName),
+                    new SqlParameter("@EmailAddress", EmailAddress),
+                    new SqlParameter("@Company", Company),
+                    new SqlParameter("@CanSendEmails", CanSendEmails),
+                    new SqlParameter("@CanBeContactedBySponsers", CanBeContactedBySponsers),
+                    new SqlParameter("@SelectedGender",SelectedGender)
+                }
+            })
+            {
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public static List<Account> Get() { return null; }
+
+        public static Account Get(int id) { return null; }
+
+    }
 }
