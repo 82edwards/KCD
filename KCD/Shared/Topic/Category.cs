@@ -11,5 +11,10 @@ namespace Model.Topic
         public int Id { get; set; }
         public string Name { get; set; }
         #endregion
+
+        public static IEnumerable<Category> GetCategories()
+        {
+            return null;
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Model.Helper;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -61,6 +62,7 @@ namespace Model.Security
             {
                 CommandText = "Security.UpdateAccount",
                 Connection = conn,
+                CommandType = CommandType.StoredProcedure,
                 Parameters = { 
                     new SqlParameter("@AccountId", Id),
                     new SqlParameter("@FirstName", FirstName),
@@ -78,9 +80,75 @@ namespace Model.Security
             }
         }
 
-        public static List<Account> Get() { return null; }
+        public static IEnumerable<Account> Get()
+        {
+            using (var conn = Sql.GetSqlConnection())
+            {
+                conn.Open();
+                using (var dr = (new SqlCommand
+                {
+                    Connection = conn,
+                    CommandText = "Security.GetAccounts",
+                    CommandType = CommandType.StoredProcedure
+                }).ExecuteReader())
+                {
+                    var results = new List<Account>();
+                    while (dr.Read())
+                    {
+                        results.Add(new Account
+                        {
+                            CanBeContactedBySponsers = Convert.ToBoolean(dr["CanBeContactedBySponsers"]),
+                            CanSendEmails = Convert.ToBoolean(dr["CanSendEmails"]),
+                            Company = Convert.ToString(dr["Company"]),
+                            EmailAddress = Convert.ToString(dr["EmailAddress"]),
+                            FirstName = Convert.ToString(dr["FirstName "]),
+                            LastName = Convert.ToString(dr["LastName"]),
+                            SelectedGender = Convert.ToInt32(dr["SelectedGender"])
+                        });
+                    }
+                    return results;
+                }
+            }
+        }
 
-        public static Account Get(int id) { return null; }
+        public static Account Get(int id)
+        {
+            using (var conn = Sql.GetSqlConnection())
+            {
+                conn.Open();
+                using (var dr = (new SqlCommand
+                {
+                    Connection = conn,
+                    CommandType = CommandType.StoredProcedure,
+                    CommandText = "Security.GetAccount"
+                }).ExecuteReader())
+                {
+                    if (!dr.Read())
+                        return null;
+                    
+                        var account = new Account
+                            {
+                                CanBeContactedBySponsers = Convert.ToBoolean(dr["CanBeContactedBySponsers"]),
+                                CanSendEmails = Convert.ToBoolean(dr["CanSendEmails"]),
+                                Company = Convert.ToString(dr["Company"]),
+                                EmailAddress = Convert.ToString(dr["EmailAddress"]),
+                                FirstName = Convert.ToString(dr["FirstName "]),
+                                LastName = Convert.ToString(dr["LastName"]),
+                                SelectedGender = Convert.ToInt32(dr["SelectedGender"]),
+                                PhoneNumbers = new List<PhoneNumber>()
+                            };
 
+                        dr.NextResult();
+
+                        while(dr.Read())
+                            account.PhoneNumbers.Add(new PhoneNumber{Id = Convert.ToInt32(dr["PhoneNumberId"]),
+                                                                        PhoneNumberType = Convert.ToString(dr["PhoneNumberType"]),
+                                                                        Value = Convert.ToString(dr["PhoneNumber"]),
+                                                                        PhoneNumberTypeId = Convert.ToInt32(dr["PhoneNumberTypeId"])});
+
+                        return account;                    
+                }
+            }
+        }
     }
 }
