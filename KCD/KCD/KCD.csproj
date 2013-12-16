@@ -174,7 +174,7 @@
     <ProjectReference Include="..\Shared\KcdModel.csproj">
       <Project>{1c3cc62a-d925-4d95-aa14-e0a541578a79}</Project>
       <Name>KcdModel</Name>
-      <Private>False</Private>
+      <Private>True</Private>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
