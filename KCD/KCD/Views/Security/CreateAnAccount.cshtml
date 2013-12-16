@@ -1,4 +1,4 @@
-﻿@model KcdModel.Security.Account
+﻿@model KCD.ViewModel.CreateAccount
 @{
     ViewBag.Title = "Create An Account";
 }
@@ -36,7 +36,7 @@
                 <label>Gender:</label>
             </td>
             <td>
-                @Html.DropDownList("Gender", Model.Genders)
+                @Html.DropDownList("Gender", Model.Account.Genders)
             </td>
         </tr>
         <tr>

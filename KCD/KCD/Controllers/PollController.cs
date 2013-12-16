@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using KCD.ViewModel;
 
 namespace KCD.Controllers
 {
     public class PollController : Controller
     {
-        //
-        // GET: /Poll/
         public ActionResult CreateAPoll()
         {
-            return View();
+            return View(new CreatePoll());
         }
-	}
+    }
 }

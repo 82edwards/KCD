@@ -24,7 +24,7 @@ namespace KcdModel.Security
             get
             {
                 var genders = Gender.Get();
-                return new SelectList(genders, "Value", "Text");
+                return new SelectList(genders, "Id", "Display");
             }
         }
         #endregion

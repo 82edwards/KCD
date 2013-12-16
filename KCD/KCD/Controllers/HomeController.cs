@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using KCD.ViewModel;
 
 namespace KCD.Controllers
 {
@@ -22,7 +19,7 @@ namespace KCD.Controllers
 
         public ActionResult CreateAnAccount()
         {
-            return View();
+            return View(new CreateAccount());
         }
     }
 }

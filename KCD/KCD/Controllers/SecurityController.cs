@@ -1,8 +1,4 @@
-﻿using KcdModel.Security;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using KCD.ViewModel;
 using System.Web.Mvc;
 
 namespace KCD.Controllers
@@ -11,7 +7,7 @@ namespace KCD.Controllers
     {
         public ActionResult CreateAnAccount()
         {
-            return View(new Account());
+            return View(new CreateAccount());
         }
 	}
 }
