@@ -168,7 +168,7 @@
     <Content Include="Views\Poll\CreateAPoll.cshtml" />
     <Content Include="Views\Topic\ViewATopic.cshtml" />
     <Content Include="Views\Topic\ViewTopics.cshtml" />
-    <Content Include="Views\Sponsors\Sponsors.cshtml" />
+    <Content Include="Views\Sponsors\ViewSponsors.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

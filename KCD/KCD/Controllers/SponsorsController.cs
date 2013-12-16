@@ -4,7 +4,7 @@ namespace KCD.Controllers
 {
     public class SponsorsController : Controller
     {
-        public ActionResult Sponsors()
+        public ActionResult ViewSponsors()
         {
             return View();
         }
