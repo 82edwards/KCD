@@ -1,12 +1,9 @@
-﻿using Model.Helper;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using KcdModel.Helper;
 
-namespace Model.Security
+namespace KcdModel.Security
 {
     public class Gender
     {

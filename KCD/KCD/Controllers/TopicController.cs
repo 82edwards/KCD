@@ -1,4 +1,4 @@
-﻿using Model.Topic;
+﻿using KcdModel.Topic;
 using System;
 using System.Collections.Generic;
 using System.Linq;

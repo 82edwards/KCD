@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
+﻿using System.Configuration;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Model.Helper
+namespace KcdModel.Helper
 {
     internal class Sql
     {
         internal static SqlConnection GetSqlConnection()
         {
-            return new SqlConnection(ConfigurationManager.ConnectionStrings["SqlConnectionStringRealTime"].ConnectionString);
+            return new SqlConnection(ConfigurationManager.ConnectionStrings["RealTime"].ConnectionString);
         }
     }
 }

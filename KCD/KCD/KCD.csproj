@@ -109,6 +109,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Sponsors\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -134,6 +135,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\KCD.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -169,9 +171,10 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Shared\Model.csproj">
+    <ProjectReference Include="..\Shared\KcdModel.csproj">
       <Project>{1c3cc62a-d925-4d95-aa14-e0a541578a79}</Project>
-      <Name>Model</Name>
+      <Name>KcdModel</Name>
+      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

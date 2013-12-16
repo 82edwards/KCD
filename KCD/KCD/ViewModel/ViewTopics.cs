@@ -1,8 +1,5 @@
-﻿using Model.Topic;
-using System;
+﻿using KcdModel.Topic;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace KCD.ViewModel
 {

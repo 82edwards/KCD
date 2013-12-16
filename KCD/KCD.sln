@@ -5,7 +5,7 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KCD", "KCD\KCD.csproj", "{F0FC5666-DA62-4AC3-849F-2A036D365E6F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Shared\Model.csproj", "{1C3CC62A-D925-4D95-AA14-E0A541578A79}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KcdModel", "Shared\KcdModel.csproj", "{1C3CC62A-D925-4D95-AA14-E0A541578A79}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
