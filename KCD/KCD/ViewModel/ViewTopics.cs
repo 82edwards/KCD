@@ -8,5 +8,10 @@ namespace KCD.ViewModel
         #region Properties
         public List<Topic> Topics { get; set; }
         #endregion
+
+        public ViewTopics()
+        {
+            Topics = Topic.GetAllTopics();
+        }
     }
 }

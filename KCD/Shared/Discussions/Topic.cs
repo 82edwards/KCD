@@ -33,22 +33,22 @@ namespace KcdModel.Discussions
         public List<Comment> Comments { get; set; }
         #endregion
 
-        public static IEnumerable<Topic> GetOpenTopics()
+        public static List<Topic> GetOpenTopics()
         {
             return GetTopics("SelectOpenTopics");
         }
 
-        public static IEnumerable<Topic> GetAllTopics()
+        public static List<Topic> GetAllTopics()
         {
             return GetTopics("SelectTopics");
         }
 
-        public static IEnumerable<Topic> GetCompletedTopics()
+        public static List<Topic> GetCompletedTopics()
         {
             return GetTopics("SelectCompletedTopics");
         }
 
-        private static IEnumerable<Topic> GetTopics(string storedProcedureName)
+        private static List<Topic> GetTopics(string storedProcedureName)
         {
             using (var conn = Sql.GetSqlConnection())
             {

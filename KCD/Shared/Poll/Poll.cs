@@ -10,5 +10,10 @@ namespace KcdModel.Poll
         public Dictionary<int, string> Answers { get; set; }
         public int NumberOfDays { get; set; }
         #endregion
+
+        public void Create()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

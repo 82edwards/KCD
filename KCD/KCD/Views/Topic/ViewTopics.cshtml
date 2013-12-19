@@ -1,10 +1,12 @@
 ﻿@model KCD.ViewModel.ViewTopics
 
 @{
-    ViewBag.Title = "ViewTopics";
+    ViewBag.Title = "Topics";
 }
 
-<h2>ViewTopics</h2>
+@Html.Partial("TopicHeader")
 
-@{var grid = new WebGrid(Model.Topics)}
-@grid.GetHtml();
+    <h2>View Topics</h2>
+
+    @{ var grid = new WebGrid(Model.Topics);}
+    @grid.GetHtml();

@@ -9,5 +9,10 @@ namespace KCD.Controllers
         {
             return View(new SuggestTopic());
         }
+
+        public ActionResult ViewTopics()
+        {
+            return View(new ViewTopics());
+        }
     }
 }

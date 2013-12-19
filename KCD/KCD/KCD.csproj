@@ -171,6 +171,7 @@
     <Content Include="Views\Topic\ViewTopics.cshtml" />
     <Content Include="Views\Sponsors\ViewSponsors.cshtml" />
     <Content Include="Views\Event\EventList.cshtml" />
+    <Content Include="Views\Topic\TopicHeader.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

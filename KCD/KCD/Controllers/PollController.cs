@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 using KCD.ViewModel;
+using KcdModel.Poll;
 
 namespace KCD.Controllers
 {
@@ -8,6 +9,14 @@ namespace KCD.Controllers
         public ActionResult CreateAPoll()
         {
             return View(new CreatePoll());
+        }
+
+        [HttpPost]
+        public ActionResult CreateAPoll(Poll poll)
+        {
+            poll.Create();
+
+            return RedirectToAction("CreateAPoll");
         }
     }
 }
