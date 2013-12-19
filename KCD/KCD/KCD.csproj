@@ -129,6 +129,7 @@
     <Compile Include="ViewModel\EventList.cs" />
     <Compile Include="ViewModel\SuggestTopic.cs" />
     <Compile Include="ViewModel\ViewATopic.cs" />
+    <Compile Include="ViewModel\ViewPolls.cs" />
     <Compile Include="ViewModel\ViewTopics.cs" />
   </ItemGroup>
   <ItemGroup>
