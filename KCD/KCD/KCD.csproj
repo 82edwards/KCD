@@ -114,6 +114,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PollController.cs" />
     <Compile Include="Controllers\SecurityController.cs" />
@@ -172,6 +173,10 @@
     <Content Include="Views\Sponsors\ViewSponsors.cshtml" />
     <Content Include="Views\Event\EventList.cshtml" />
     <Content Include="Views\Topic\TopicHeader.cshtml" />
+    <Content Include="Views\Sponsors\SponsorsHeader.cshtml" />
+    <Content Include="Views\Poll\PollHeader.cshtml" />
+    <Content Include="Views\Security\SecurityHeader.cshtml" />
+    <Content Include="Views\Event\EventHeader.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
