@@ -125,6 +125,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\CreateAccount.cs" />
     <Compile Include="ViewModel\CreatePoll.cs" />
+    <Compile Include="ViewModel\EventList.cs" />
     <Compile Include="ViewModel\SuggestTopic.cs" />
     <Compile Include="ViewModel\ViewATopic.cs" />
     <Compile Include="ViewModel\ViewTopics.cs" />
@@ -169,6 +170,7 @@
     <Content Include="Views\Topic\ViewATopic.cshtml" />
     <Content Include="Views\Topic\ViewTopics.cshtml" />
     <Content Include="Views\Sponsors\ViewSponsors.cshtml" />
+    <Content Include="Views\Event\EventList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

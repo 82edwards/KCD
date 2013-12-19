@@ -41,17 +41,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attendee.cs" />
+    <Compile Include="Event.cs" />
     <Compile Include="Helper\Sql.cs" />
     <Compile Include="Poll\Poll.cs" />
     <Compile Include="Poll\Vote.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\Account.cs" />
-    <Compile Include="Security\Gender.cs" />
     <Compile Include="Security\PhoneNumber.cs" />
     <Compile Include="Security\User.cs" />
-    <Compile Include="Topic\Category.cs" />
-    <Compile Include="Topic\Comment.cs" />
-    <Compile Include="Topic\Topic.cs" />
+    <Compile Include="Discussions\Category.cs" />
+    <Compile Include="Discussions\Comment.cs" />
+    <Compile Include="Discussions\Topic.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

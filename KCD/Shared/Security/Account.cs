@@ -11,22 +11,15 @@ namespace KcdModel.Security
     {
         #region Properties
         public int Id { get; set; }
+        public string UserName { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string Password { get; set; }
         public string EmailAddress { get; set; }
         public string Company { get; set; }
         public bool CanSendEmails { get; set; }
         public bool CanBeContactedBySponsers { get; set; }
         public List<PhoneNumber> PhoneNumbers { get; set; }
-        public int SelectedGender { get; set; }
-        public SelectList Genders
-        {
-            get
-            {
-                var genders = Gender.Get();
-                return new SelectList(genders, "Id", "Display");
-            }
-        }
         #endregion
 
         public int Create()
@@ -39,13 +32,14 @@ namespace KcdModel.Security
                     CommandText = "Security.CreateAccount",
                     Connection = conn,
                     Parameters = {                     
+                        new SqlParameter("@UserName", UserName),
                         new SqlParameter("@FirstName", FirstName),
                         new SqlParameter("@LastName", LastName),
+                        new SqlParameter("@Password", Password),
                         new SqlParameter("@EmailAddress", EmailAddress),
                         new SqlParameter("@Company", Company),
                         new SqlParameter("@CanSendEmails", CanSendEmails),
-                        new SqlParameter("@CanBeContactedBySponsers", CanBeContactedBySponsers),
-                        new SqlParameter("@SelectedGender",SelectedGender)
+                        new SqlParameter("@CanBeContactedBySponsors", CanBeContactedBySponsers)
                 }
                 })
                     return Convert.ToInt32(cmd.ExecuteScalar());
@@ -67,8 +61,7 @@ namespace KcdModel.Security
                     new SqlParameter("@EmailAddress", EmailAddress),
                     new SqlParameter("@Company", Company),
                     new SqlParameter("@CanSendEmails", CanSendEmails),
-                    new SqlParameter("@CanBeContactedBySponsers", CanBeContactedBySponsers),
-                    new SqlParameter("@SelectedGender",SelectedGender)
+                    new SqlParameter("@CanBeContactedBySponsers", CanBeContactedBySponsers)
                 }
             })
             {
@@ -99,8 +92,7 @@ namespace KcdModel.Security
                             Company = Convert.ToString(dr["Company"]),
                             EmailAddress = Convert.ToString(dr["EmailAddress"]),
                             FirstName = Convert.ToString(dr["FirstName "]),
-                            LastName = Convert.ToString(dr["LastName"]),
-                            SelectedGender = Convert.ToInt32(dr["SelectedGender"])
+                            LastName = Convert.ToString(dr["LastName"])
                         });
                     }
                     return results;
@@ -122,28 +114,30 @@ namespace KcdModel.Security
                 {
                     if (!dr.Read())
                         return null;
-                    
-                        var account = new Account
-                            {
-                                CanBeContactedBySponsers = Convert.ToBoolean(dr["CanBeContactedBySponsers"]),
-                                CanSendEmails = Convert.ToBoolean(dr["CanSendEmails"]),
-                                Company = Convert.ToString(dr["Company"]),
-                                EmailAddress = Convert.ToString(dr["EmailAddress"]),
-                                FirstName = Convert.ToString(dr["FirstName "]),
-                                LastName = Convert.ToString(dr["LastName"]),
-                                SelectedGender = Convert.ToInt32(dr["SelectedGender"]),
-                                PhoneNumbers = new List<PhoneNumber>()
-                            };
 
-                        dr.NextResult();
+                    var account = new Account
+                        {
+                            CanBeContactedBySponsers = Convert.ToBoolean(dr["CanBeContactedBySponsers"]),
+                            CanSendEmails = Convert.ToBoolean(dr["CanSendEmails"]),
+                            Company = Convert.ToString(dr["Company"]),
+                            EmailAddress = Convert.ToString(dr["EmailAddress"]),
+                            FirstName = Convert.ToString(dr["FirstName "]),
+                            LastName = Convert.ToString(dr["LastName"]),
+                            PhoneNumbers = new List<PhoneNumber>()
+                        };
 
-                        while(dr.Read())
-                            account.PhoneNumbers.Add(new PhoneNumber{Id = Convert.ToInt32(dr["PhoneNumberId"]),
-                                                                        PhoneNumberType = Convert.ToString(dr["PhoneNumberType"]),
-                                                                        Value = Convert.ToString(dr["PhoneNumber"]),
-                                                                        PhoneNumberTypeId = Convert.ToInt32(dr["PhoneNumberTypeId"])});
+                    dr.NextResult();
 
-                        return account;                    
+                    while (dr.Read())
+                        account.PhoneNumbers.Add(new PhoneNumber
+                        {
+                            Id = Convert.ToInt32(dr["PhoneNumberId"]),
+                            PhoneNumberType = Convert.ToString(dr["PhoneNumberType"]),
+                            Value = Convert.ToString(dr["PhoneNumber"]),
+                            PhoneNumberTypeId = Convert.ToInt32(dr["PhoneNumberTypeId"])
+                        });
+
+                    return account;
                 }
             }
         }

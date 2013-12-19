@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KcdModel.Topic
+namespace KcdModel.Discussions
 {
     public class Comment
     {

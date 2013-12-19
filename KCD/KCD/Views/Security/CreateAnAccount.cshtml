@@ -3,88 +3,90 @@
     ViewBag.Title = "Create An Account";
 }
 
-<h2>Register</h2>
+@using (Html.BeginForm())
+{
+    <h2>Register</h2>
 
-<div>
-    <table>
-        <tr>
-            <td>
-                <label>First Name:</label>
-            </td>
-            <td>
-                @Html.TextBox("FirstName")
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label>Last Name:</label>
-            </td>
-            <td>
-                @Html.TextBox("LastName")
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label>Email Address:</label>
-            </td>
-            <td>
-                @Html.TextBox("EmailAddress")
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label>Gender:</label>
-            </td>
-            <td>
-                @Html.DropDownList("Gender", Model.Account.Genders)
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label>Company:</label>
-            </td>
-            <td>
-                @Html.TextBox("Company")
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label>Recieve Emails:</label>
-            </td>
-            <td>
-                @Html.CheckBox("CanSendEmails", true)
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label>Contacted by Sponsers:</label>
-            </td>
-            <td>
-                @Html.CheckBox("CanBeContactedBySponsers", true)
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label>Password:</label>
-            </td>
-            <td>
-                @Html.TextBox("Password")
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label>Re-Enter:</label>
-            </td>
-            <td>
-                @Html.TextBox("PasswordConfirmation")
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <input type="submit" id="btnSave" value="Submit" />
-            </td>
-            <td></td>
-        </tr>
-    </table>
-    <!--Todo:  Integrate SSO tied to microsoft or google???-->
-</div>
+    <div>
+        <table>
+            <tr>
+                <td>
+                    <label>UserName:</label>
+                </td>
+                <td>
+                    @Html.TextBox("UserName")
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>First Name:</label>
+                </td>
+                <td>
+                    @Html.TextBox("FirstName")
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Last Name:</label>
+                </td>
+                <td>
+                    @Html.TextBox("LastName")
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Email Address:</label>
+                </td>
+                <td>
+                    @Html.TextBox("EmailAddress")
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Company:</label>
+                </td>
+                <td>
+                    @Html.TextBox("Company")
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Recieve Emails:</label>
+                </td>
+                <td>
+                    @Html.CheckBox("CanSendEmails", true)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Contacted by Sponsers:</label>
+                </td>
+                <td>
+                    @Html.CheckBox("CanBeContactedBySponsers", true)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Password:</label>
+                </td>
+                <td>
+                    @Html.Password("Password")
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Re-Enter:</label>
+                </td>
+                <td>
+                    <input type="password" id="PasswordConformation" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" id="btnSave" value="Submit" />
+                </td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+}

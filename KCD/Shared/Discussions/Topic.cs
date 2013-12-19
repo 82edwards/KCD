@@ -4,7 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using KcdModel.Helper;
 
-namespace KcdModel.Topic
+namespace KcdModel.Discussions
 {
     public class Topic
     {

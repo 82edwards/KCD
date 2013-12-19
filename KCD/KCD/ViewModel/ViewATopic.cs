@@ -1,4 +1,4 @@
-﻿using KcdModel.Topic;
+﻿using KcdModel.Discussions;
 
 namespace KCD.ViewModel
 {

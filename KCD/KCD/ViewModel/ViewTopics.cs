@@ -1,5 +1,5 @@
-﻿using KcdModel.Topic;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using KcdModel.Discussions;
 
 namespace KCD.ViewModel
 {
