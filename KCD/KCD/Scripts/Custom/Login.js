@@ -6,8 +6,13 @@
             url: "../Security/Login",
             data: { userName: 'test', password: 'pass' },
             cache: false,
-            complete: function () {
-                $('#LoginBox').slideToggle(400);
+            complete: function (result) {
+                if (result) {
+                    $('#LoginBox').slideToggle(400);
+                    $('#login').text('Log Out');
+                } else {
+
+                }
             }
         });
     });
