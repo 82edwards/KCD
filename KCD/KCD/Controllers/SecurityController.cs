@@ -18,5 +18,11 @@ namespace KCD.Controllers
 
             return RedirectToAction("CreateAnAccount");
         }
+
+        [HttpPost]
+        public JsonResult Login(string userName, string password)
+        {
+            return new JsonResult();
+        }
     }
 }
