@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "View A Topic";
 }
-@Html.Partial("TopicHeader")
+@{Html.RenderPartial("TopicHeader");}
 
 <h2>View A Topic</h2>
 
@@ -27,7 +27,7 @@
                     <td>Up Arrow</td>
                 </tr>
                 <tr>
-                    <td>@Html.Label("Votes")</td>                    
+                    <td>@Html.Label("Votes")</td>
                 </tr>
                 <tr>
                     <td>Down Arrow</td>

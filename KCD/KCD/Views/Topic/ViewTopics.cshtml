@@ -4,9 +4,9 @@
     ViewBag.Title = "Topics";
 }
 
-@Html.Partial("TopicHeader")
+@{Html.RenderPartial("TopicHeader");}
 
-    <h2>View Topics</h2>
+<h2>View Topics</h2>
 
-    @{ var grid = new WebGrid(Model.Topics);}
-    @grid.GetHtml();
+@{ var grid = new WebGrid(Model.Topics);}
+@grid.GetHtml();

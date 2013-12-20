@@ -1,0 +1,33 @@
+﻿<table>
+    <tr>
+        <td>
+            @Html.TextBox("UserName")
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.TextBox("Password")
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.CheckBox("KeepSignedIn")
+            @Html.Label("Keep me signed in")
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input type="button" id="SignIn" value="Sign In" onclick="SignIn()" />
+        </td>
+    </tr>
+    <tr>
+        <td>
+            OR
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <input type="button" id="CreateAnAccount" value="Create New Account" onclick="CreateAnAccount()" />
+        </td>
+    </tr>
+</table>
