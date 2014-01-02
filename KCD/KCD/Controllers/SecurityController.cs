@@ -22,6 +22,8 @@ namespace KCD.Controllers
         [HttpPost]
         public JsonResult Login(string userName, string password)
         {
+            var result = Account.Get();
+
             return new JsonResult();
         }
     }

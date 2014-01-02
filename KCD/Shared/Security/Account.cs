@@ -141,5 +141,26 @@ namespace KcdModel.Security
                 }
             }
         }
+
+        public static bool Authenticate(string userName, string password)
+        {
+            using (var conn = Sql.GetSqlConnection())
+            using (var cmd = new SqlCommand
+            {
+                Connection = conn,
+                CommandText = "Security.Authenticate",
+                CommandType = CommandType.StoredProcedure,
+                Parameters = { new SqlParameter("@UserName", userName)
+                    , new SqlParameter("@Password", password) 
+                }
+            })
+            {
+                conn.Open();
+                using (var dr = cmd.ExecuteReader())
+                {
+                    return dr.Read();
+                }
+            }
+        }
     }
 }
