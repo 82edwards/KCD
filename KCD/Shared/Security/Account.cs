@@ -31,6 +31,7 @@ namespace KcdModel.Security
                 {
                     CommandText = "Security.CreateAccount",
                     Connection = conn,
+                    CommandType =  CommandType.StoredProcedure,
                     Parameters = {                     
                         new SqlParameter("@UserName", UserName),
                         new SqlParameter("@FirstName", FirstName),

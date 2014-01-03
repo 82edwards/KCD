@@ -1,6 +1,6 @@
 ﻿using KCD.ViewModel;
-using System.Web.Mvc;
 using KcdModel.Security;
+using System.Web.Mvc;
 
 namespace KCD.Controllers
 {
@@ -22,9 +22,9 @@ namespace KCD.Controllers
         [HttpPost]
         public JsonResult Login(string userName, string password)
         {
-            var result = Account.Get();
+            var result = @"{""Success"":""" + Account.Authenticate(userName, password) + @"""}";
 
-            return new JsonResult();
+            return Json(result, "application/json");
         }
     }
 }
