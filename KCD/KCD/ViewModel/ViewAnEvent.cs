@@ -2,7 +2,7 @@
 
 namespace KCD.ViewModel
 {
-    public class ViewAEvent
+    public class ViewAnEvent
     {
         #region Properties
         public Event Event { get; set; }

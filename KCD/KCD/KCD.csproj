@@ -128,7 +128,7 @@
     <Compile Include="ViewModel\CreatePoll.cs" />
     <Compile Include="ViewModel\EventList.cs" />
     <Compile Include="ViewModel\SuggestTopic.cs" />
-    <Compile Include="ViewModel\ViewAEvent.cs" />
+    <Compile Include="ViewModel\ViewAnEvent.cs" />
     <Compile Include="ViewModel\ViewATopic.cs" />
     <Compile Include="ViewModel\ViewPolls.cs" />
     <Compile Include="ViewModel\ViewTopics.cs" />
@@ -182,6 +182,7 @@
     <Content Include="Views\Security\SecurityHeader.cshtml" />
     <Content Include="Views\Event\EventHeader.cshtml" />
     <Content Include="Views\Shared\Login.cshtml" />
+    <Content Include="Views\Event\ViewAnEvent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
