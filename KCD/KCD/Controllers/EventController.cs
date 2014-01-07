@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using KCD.ViewModel;
 
 namespace KCD.Controllers
 {
@@ -6,7 +7,7 @@ namespace KCD.Controllers
     {
         public ActionResult EventList()
         {
-            return View();
+            return View(new EventList());
         }
     }
 }

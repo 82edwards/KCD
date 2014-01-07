@@ -1,10 +1,40 @@
 ﻿@model KCD.ViewModel.EventList
-
 @{
     ViewBag.Title = "Events";
 }
 
 <h2>Event List</h2>
 
+<h3>Upcoming Events</h3>
+<table>
+    @foreach (var a in Model.UpcomingEvents)
+    {
+        <tr>
+            <td>
+                <b><a href="">@a.EventTitle</a></b>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @a.EventDescription
+            </td>
+        </tr>
+    }
+</table>
 
-
+<h3>Past Events</h3>
+<table>
+    @foreach (var a in Model.PastEvents)
+    {
+        <tr>
+            <td>
+                <b><a href="">@a.EventTitle</a></b>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @a.EventDescription
+            </td>
+        </tr>
+    }
+</table>

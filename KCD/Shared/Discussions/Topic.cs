@@ -203,5 +203,24 @@ namespace KcdModel.Discussions
                 return true;
             }
         }
+
+        internal static List<Topic> GetTopics(SqlDataReader dr)
+        {
+            var topics = new List<Topic>();
+            while (dr.Read())
+            {
+                topics.Add(new Topic
+                {
+                    Id = Convert.ToInt32(dr["TopicId"]),
+                    Name = Convert.ToString(dr["TopicName"]),
+                    Description = Convert.ToString(dr["TopicDescription"]),
+                    SuggestedBy = Convert.ToInt32(dr["SuggestedById"]),
+                    SuggestedDate = Convert.ToDateTime(dr["SuggestedDateTime"]),
+                    DateCovered = Convert.ToDateTime(dr["CompletedDateTime"]),
+                    NumberOfVotes = Convert.ToInt32(dr["NumberOfVotes"])
+                });
+            }
+            return topics;
+        }
     }
 }
