@@ -8,5 +8,10 @@
 
 <h2>View Topics</h2>
 
-@{ var grid = new WebGrid(Model.Topics);}
-@grid.GetHtml();
+@if (Model.Topics.Count > 0)
+{
+    {
+        var grid = new WebGrid(Model.Topics);
+        grid.GetHtml();
+    }
+}

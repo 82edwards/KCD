@@ -3,5 +3,45 @@
     ViewBag.Title = Model.Event.EventTitle;
 }
 
-<h2>ViewBag.Title</h2>
+<h2>@ViewBag.Title</h2>
+<h3>@Model.Event.EventDescription</h3>
 
+<table>
+    <tr>
+        <td>
+            <b>@Model.Event.EventDate.Date.ToShortDateString()</b>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <table>
+                <tr>
+                    <td><b>Topics</b></td>
+                </tr>
+                @foreach (var a in Model.Event.Topics)
+                {
+                    <tr>
+                        <td>
+                            <a href="\Topic\ViewATopic">@String.Format("{0} - {1}", a.Name, a.NumberOfVotes)</a>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </td>
+        <td>
+            <table>
+                <tr>
+                    <td><b>Attendees</b></td>
+                </tr>
+                @foreach (var a in Model.Event.Attendees)
+                {
+                    <tr>
+                        <td>
+                            @String.Format("{0} {1} ({2})", a.FirstName, a.LastName, a.Company)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </td>
+    </tr>
+</table>

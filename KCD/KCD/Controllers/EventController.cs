@@ -9,5 +9,10 @@ namespace KCD.Controllers
         {
             return View(new EventList());
         }
+
+        public ActionResult ViewAnEvent(int eventId)
+        {
+            return View(new ViewAnEvent(eventId));
+        }
     }
 }
