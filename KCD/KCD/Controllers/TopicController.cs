@@ -14,5 +14,10 @@ namespace KCD.Controllers
         {
             return View(new ViewTopics());
         }
+
+        public ActionResult ViewATopic(int topicId)
+        {
+            return View(new ViewATopic(topicId));
+        }
     }
 }

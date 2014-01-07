@@ -19,6 +19,7 @@ namespace KcdModel.Discussions
             SuggestedDate = Convert.ToDateTime(dr["SuggestedDateTime"]);
             DateCovered = Convert.ToDateTime(dr["CompletedDateTime"]);
             NumberOfVotes = Convert.ToInt32(dr["NumberOfVotes"]);
+            SuggestedByName = Convert.ToString(dr["SuggestedByName"]);
         }
 
         #region Properties
@@ -26,6 +27,7 @@ namespace KcdModel.Discussions
         public string Name { get; set; }
         public string Description { get; set; }
         public int SuggestedBy { get; set; }
+        public string SuggestedByName { get; set; }
         public DateTime SuggestedDate { get; set; }
         public DateTime DateCovered { get; set; }
         public int NumberOfVotes { get; set; }

@@ -5,7 +5,12 @@ namespace KCD.ViewModel
     public class ViewATopic
     {
         #region Properties
-        public Topic Topics { get; set; }
+        public Topic Topic { get; set; }
         #endregion
+
+        public ViewATopic(int topicId)
+        {
+            Topic = Topic.GetTopic(topicId);
+        }
     }
 }

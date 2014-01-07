@@ -13,11 +13,11 @@
             <table>
                 <tr>
                     <td>Title:</td>
-                    <td>@Html.TextBox("Title")</td>
+                    <td>@Html.TextBox("Title", Model.Topic.Name)</td>
                 </tr>
                 <tr>
                     <td>Description:</td>
-                    <td>@Html.TextArea("Description")</td>
+                    <td>@Html.TextArea("Description", Model.Topic.Description)</td>
                 </tr>
             </table>
         </td>

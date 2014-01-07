@@ -22,7 +22,7 @@
                 {
                     <tr>
                         <td>
-                            <a href="\Topic\ViewATopic">@String.Format("{0} - {1}", a.Name, a.NumberOfVotes)</a>
+                            <a href="\Topic\ViewATopic?topicId=@a.Id">@String.Format("{0}", a.Name)</a>
                         </td>
                     </tr>
                 }
