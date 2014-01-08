@@ -32,6 +32,11 @@ namespace KCD.Controllers
             return Json(result, "application/json");
         }
 
+        public ActionResult ResetPassword()
+        {
+            return View();
+        }
+
         private static string SecurePassword(string password)
         {
             var passwordArray = Encoding.ASCII.GetBytes(password);

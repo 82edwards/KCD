@@ -203,6 +203,7 @@
     <Content Include="Views\Event\EventHeader.cshtml" />
     <Content Include="Views\Shared\Login.cshtml" />
     <Content Include="Views\Event\ViewAnEvent.cshtml" />
+    <Content Include="Views\Security\ResetPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
