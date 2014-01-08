@@ -1,4 +1,5 @@
-﻿using KCD.ViewModel;
+﻿using System;
+using KCD.ViewModel;
 using KcdModel.Security;
 using System.Text;
 using System.Web.Mvc;
@@ -35,6 +36,12 @@ namespace KCD.Controllers
         public ActionResult ResetPassword()
         {
             return View();
+        }
+
+        [HttpPost]
+        public JsonResult ResetPassword(string userName, string existingPassword, string newPassword)
+        {
+            return Json("{failure}", "application/json");
         }
 
         private static string SecurePassword(string password)
