@@ -1,4 +1,7 @@
-﻿using KCD.ViewModel;
+﻿using System;
+using System.Configuration;
+using System.Web;
+using KCD.ViewModel;
 using KcdModel.Security;
 using System.Security.Cryptography;
 using System.Text;
@@ -31,8 +34,12 @@ namespace KCD.Controllers
         public JsonResult Login(string userName, string password)
         {
             password = SecurePassword(password);
+            var result = Account.Authenticate(userName, password);
 
-            return Json(@"{""Success"":""" + Account.Authenticate(userName, password) + @"""}", "application/json");
+            if (result)
+                CreateCookie(userName);
+
+            return Json(@"{""Success"":""" + result + @"""}", "application/json");
         }
 
         [HttpPost]
@@ -49,6 +56,22 @@ namespace KCD.Controllers
             var data = Encoding.ASCII.GetBytes(password);
             data = (new MD5CryptoServiceProvider()).ComputeHash(data);
             return Encoding.ASCII.GetString(data);
+        }
+
+        private void CreateCookie(string userName)
+        {
+            Response.Cookies.Add(new HttpCookie(ConfigurationManager.AppSettings.Get("CookieName"))
+            {
+                Value = userName,
+                Expires = (DateTime.Now).AddMinutes(30)
+            });
+        }
+
+        private string GetUserNameFromCookie()
+        {
+            var cookie = Response.Cookies.Get(ConfigurationManager.AppSettings.Get("CookieName"));
+            
+            return cookie == null ? "" : cookie.Value;
         }
     }
 }
