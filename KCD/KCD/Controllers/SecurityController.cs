@@ -1,9 +1,8 @@
-﻿using System;
-using KCD.ViewModel;
+﻿using KCD.ViewModel;
 using KcdModel.Security;
+using System.Security.Cryptography;
 using System.Text;
 using System.Web.Mvc;
-using System.Web.Security;
 
 namespace KCD.Controllers
 {
@@ -12,6 +11,11 @@ namespace KCD.Controllers
         public ActionResult CreateAnAccount()
         {
             return View(new CreateAccount());
+        }
+
+        public ActionResult ResetPassword()
+        {
+            return View();
         }
 
         [HttpPost]
@@ -28,26 +32,23 @@ namespace KCD.Controllers
         {
             password = SecurePassword(password);
 
-            var result = @"{""Success"":""" + Account.Authenticate(userName, password) + @"""}";
-
-            return Json(result, "application/json");
-        }
-
-        public ActionResult ResetPassword()
-        {
-            return View();
+            return Json(@"{""Success"":""" + Account.Authenticate(userName, password) + @"""}", "application/json");
         }
 
         [HttpPost]
         public JsonResult ResetPassword(string userName, string existingPassword, string newPassword)
         {
-            return Json("{failure}", "application/json");
+            existingPassword = SecurePassword(existingPassword);
+            newPassword = SecurePassword(newPassword);
+            var result = Account.ResetPassword(userName, existingPassword, newPassword);
+            return Json(@"{""Success"":""" + result + @"""}", "application/json");
         }
 
         private static string SecurePassword(string password)
         {
-            var passwordArray = Encoding.ASCII.GetBytes(password);
-            return Encoding.ASCII.GetString(MachineKey.Protect(passwordArray, "Authentication token"));
+            var data = Encoding.ASCII.GetBytes(password);
+            data = (new MD5CryptoServiceProvider()).ComputeHash(data);
+            return Encoding.ASCII.GetString(data);
         }
     }
 }

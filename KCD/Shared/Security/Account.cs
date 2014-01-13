@@ -31,7 +31,7 @@ namespace KcdModel.Security
                 {
                     CommandText = "Security.CreateAccount",
                     Connection = conn,
-                    CommandType =  CommandType.StoredProcedure,
+                    CommandType = CommandType.StoredProcedure,
                     Parameters = {                     
                         new SqlParameter("@UserName", UserName),
                         new SqlParameter("@FirstName", FirstName),
@@ -161,6 +161,28 @@ namespace KcdModel.Security
                 {
                     return dr.Read();
                 }
+            }
+        }
+
+        public static bool ResetPassword(string userName, string existingPassword, string newPassword)
+        {
+            using (var conn = Sql.GetSqlConnection())
+            using (var cmd = new SqlCommand
+            {
+                Connection = conn,
+                CommandType = CommandType.StoredProcedure,
+                CommandText = "Security.ResetPassword",
+                Parameters =
+                {
+                    new SqlParameter("@UserName", userName), 
+                    new SqlParameter("@ExistingPassword", existingPassword), 
+                    new SqlParameter("@NewPassword", newPassword)
+                }
+            })
+            {
+                conn.Open();
+                using (var dr = cmd.ExecuteReader())
+                    return dr.Read();
             }
         }
     }
