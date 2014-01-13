@@ -141,6 +141,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\banner_general.gif" />
     <Content Include="Images\pluralsight.png" />
     <Content Include="Images\premier.jpg" />
     <Content Include="MeetingImages\Cristy%27s iPad Pics 169.JPG" />
