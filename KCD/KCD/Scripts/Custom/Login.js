@@ -4,7 +4,9 @@ $(document).ready(function () {
         $.ajax({
             type: "POST",
             url: "../Security/Login",
-            data: { userName: $('#LoginUserName').val(), password: $('#LoginPassword').val(), persist: $('#KeepSignedIn').val() },
+            data: {
+                userName: $('#LoginUserName').val(), password: $('#LoginPassword').val(), keepSignedIn: $('#KeepSignedIn').prop('checked')
+            },
             cache: false,
             complete: function (result) {
                 var test = JSON.parse(result.responseJSON);

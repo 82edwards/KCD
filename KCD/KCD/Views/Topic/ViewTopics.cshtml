@@ -10,20 +10,61 @@
 
 @if (Model.Topics.Count > 0)
 {
+    <style type="text/css">
+        .webGrid {
+            margin: 4px;
+            border-collapse: collapse;
+            background-color: #B4CFC3;
+        }
+
+        .header {
+            background-color: #C1D4E6;
+            font-weight: bold;
+            color: #FFF;
+        }
+
+        .webGrid th, .webGrid td {
+            border: 1px solid #C0C0C0;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .alt {
+            background-color: #E4E9F5;
+            color: #000;
+        }
+
+        .gridHead a:hover {
+            text-decoration: underline;
+        }
+
+        .description {
+            width: auto;
+        }
+
+        .select {
+            background-color: #71857C;
+        }
+    </style>
     <table>
         <tr>
             <td>
                 @{
-    var grid = new WebGrid(Model.Topics, rowsPerPage: 20);
-    
+    var grid = new WebGrid(Model.Topics, rowsPerPage: 20, selectionFieldName: "selectedRow", ajaxUpdateContainerId: "gridContent");
+
                 }
                 @grid.GetHtml(
+                tableStyle: "webGrid",
+                alternatingRowStyle: "alt",
+                headerStyle: "header",
+                selectedRowStyle: "select",
                     columns: grid.Columns(
                         grid.Column("NumberOfVotes", "Votes  "),
                         grid.Column("Name", format: @<a href="/Topic/ViewATopic?topicId=@item.Id">@item.Name</a>),
                         grid.Column("SuggestedByName", "Suggested By"),
                         grid.Column("Suggested Date", format: @<b>@Convert.ToDateTime(item.SuggestedDate).ToShortDateString()</b>),
-                        grid.Column("Date Covered", format: @<b>@Convert.ToDateTime(item.DateCovered).ToShortDateString()</b>)))
+                        grid.Column("Date Covered", format: @<b>@Convert.ToDateTime(item.DateCovered).ToShortDateString()</b>))
+                                                  )
             </td>
         </tr>
     </table>

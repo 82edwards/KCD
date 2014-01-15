@@ -69,16 +69,17 @@ namespace KCD.Controllers
 
         private void CreateCookie(string userName, bool keepSignedIn)
         {
-            var persistInterval = (DateTime.Now).AddMinutes(30);
-
             if (keepSignedIn)
-                persistInterval = (DateTime.Now).AddDays(100);
-            
-            Response.Cookies.Add(new HttpCookie("KCD")
-            {
-                Value = userName,
-                Expires = persistInterval
-            });
+                Response.Cookies.Add(new HttpCookie("KCD")
+                {
+                    Value = userName,
+                    Expires = (DateTime.Now).AddDays(100)
+                });
+            else
+                Response.Cookies.Add(new HttpCookie("KCD")
+                {
+                    Value = userName
+                });
         }
 
         private void DeleteCookie()
