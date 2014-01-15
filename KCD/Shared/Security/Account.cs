@@ -1,9 +1,8 @@
-﻿using System;
+﻿using KcdModel.Helper;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Web.Mvc;
-using KcdModel.Helper;
 
 namespace KcdModel.Security
 {
@@ -16,11 +15,28 @@ namespace KcdModel.Security
         public string LastName { get; set; }
         public string Password { get; set; }
         public string EmailAddress { get; set; }
+        public string EmailAddressForSponsors { get; set; }
         public string Company { get; set; }
         public bool CanSendEmails { get; set; }
-        public bool CanBeContactedBySponsers { get; set; }
+        public bool CanBeContactedBySponsors { get; set; }
         public List<PhoneNumber> PhoneNumbers { get; set; }
         #endregion
+
+        public Account(IDataRecord dr)
+        {
+            CanBeContactedBySponsors = Convert.ToBoolean(dr["CanBeContactedBySponsors"]);
+            CanSendEmails = Convert.ToBoolean(dr["CanSendEmails"]);
+            Company = Convert.ToString(dr["Company"]);
+            EmailAddress = Convert.ToString(dr["EmailAddress"]);
+            EmailAddressForSponsors = Convert.ToString(dr["EmailAddressForSponsors"]);
+            FirstName = Convert.ToString(dr["FirstName "]);
+            LastName = Convert.ToString(dr["LastName"]);
+            PhoneNumbers = new List<PhoneNumber>();
+        }
+
+        public Account()
+        {
+        }
 
         public int Create()
         {
@@ -38,9 +54,10 @@ namespace KcdModel.Security
                         new SqlParameter("@LastName", LastName),
                         new SqlParameter("@Password", Password),
                         new SqlParameter("@EmailAddress", EmailAddress),
+                        new SqlParameter("@EmailAddressForSponsers", EmailAddressForSponsors),
                         new SqlParameter("@Company", Company),
                         new SqlParameter("@CanSendEmails", CanSendEmails),
-                        new SqlParameter("@CanBeContactedBySponsors", CanBeContactedBySponsers)
+                        new SqlParameter("@CanBeContactedBySponsors", CanBeContactedBySponsors)
                 }
                 })
                     return Convert.ToInt32(cmd.ExecuteScalar());
@@ -57,12 +74,15 @@ namespace KcdModel.Security
                 CommandType = CommandType.StoredProcedure,
                 Parameters = { 
                     new SqlParameter("@AccountId", Id),
+                    new SqlParameter("@UserName", UserName), 
                     new SqlParameter("@FirstName", FirstName),
                     new SqlParameter("@LastName", LastName),
+                    new SqlParameter("@Password", Password),
                     new SqlParameter("@EmailAddress", EmailAddress),
+                    new SqlParameter("@EmailAddressForSponsors", EmailAddressForSponsors),
                     new SqlParameter("@Company", Company),
                     new SqlParameter("@CanSendEmails", CanSendEmails),
-                    new SqlParameter("@CanBeContactedBySponsers", CanBeContactedBySponsers)
+                    new SqlParameter("@CanBeContactedBySponsors", CanBeContactedBySponsors)
                 }
             })
             {
@@ -86,15 +106,7 @@ namespace KcdModel.Security
                     var results = new List<Account>();
                     while (dr.Read())
                     {
-                        results.Add(new Account
-                        {
-                            CanBeContactedBySponsers = Convert.ToBoolean(dr["CanBeContactedBySponsers"]),
-                            CanSendEmails = Convert.ToBoolean(dr["CanSendEmails"]),
-                            Company = Convert.ToString(dr["Company"]),
-                            EmailAddress = Convert.ToString(dr["EmailAddress"]),
-                            FirstName = Convert.ToString(dr["FirstName "]),
-                            LastName = Convert.ToString(dr["LastName"])
-                        });
+                        results.Add(new Account(dr));
                     }
                     return results;
                 }
@@ -116,16 +128,7 @@ namespace KcdModel.Security
                     if (!dr.Read())
                         return null;
 
-                    var account = new Account
-                        {
-                            CanBeContactedBySponsers = Convert.ToBoolean(dr["CanBeContactedBySponsers"]),
-                            CanSendEmails = Convert.ToBoolean(dr["CanSendEmails"]),
-                            Company = Convert.ToString(dr["Company"]),
-                            EmailAddress = Convert.ToString(dr["EmailAddress"]),
-                            FirstName = Convert.ToString(dr["FirstName "]),
-                            LastName = Convert.ToString(dr["LastName"]),
-                            PhoneNumbers = new List<PhoneNumber>()
-                        };
+                    var account = new Account(dr);
 
                     dr.NextResult();
 

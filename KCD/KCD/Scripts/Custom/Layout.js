@@ -1,8 +1,12 @@
 ﻿$(document).ready(function () {
-    $('#LoginBox').hide();
+
+    $('#LoginBox').slideToggle(400);
 
     $('#login').click(function () {
         $('#LoginBox').slideToggle(400);
-        return false;
+    });
+
+    $('#logout').click(function () {
+        LoggedOut();
     });
 });

@@ -14,7 +14,8 @@
         <tr>
             <td>
                 @{
-    var grid = new WebGrid(Model.Topics);
+    var grid = new WebGrid(Model.Topics, rowsPerPage: 20);
+    
                 }
                 @grid.GetHtml(
                     columns: grid.Columns(

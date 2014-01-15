@@ -30,10 +30,11 @@
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Sponsors", "ViewSponsors", "Sponsors")</li>
                     <li><a href="#" id="login">Log In</a></li>
+                    <li><a href="#" id="logout">Log Out</a></li>
                 </ul>
             </div>
             <div id="LoginBox">
-                @{ Html.RenderPartial("Login"); }
+               @{ Html.RenderPartial("Login"); }
             </div>
         </div>
     </div>
@@ -47,5 +48,17 @@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
     @Scripts.Render("~/Scripts/Custom/Layout.js")
+    @if (Request.Cookies.AllKeys.Contains("KCD"))
+    {
+        <script>
+            LoggedIn();
+        </script>
+    }
+    else
+    {
+        <script>
+            SLoggedOut()
+        </script>
+    }
 </body>
 </html>

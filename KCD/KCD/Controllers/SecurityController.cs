@@ -1,10 +1,9 @@
-﻿using System;
-using System.Configuration;
-using System.Web;
-using KCD.ViewModel;
+﻿using KCD.ViewModel;
 using KcdModel.Security;
+using System;
 using System.Security.Cryptography;
 using System.Text;
+using System.Web;
 using System.Web.Mvc;
 
 namespace KCD.Controllers
@@ -24,8 +23,11 @@ namespace KCD.Controllers
         [HttpPost]
         public ActionResult CreateAnAccount(Account account)
         {
-            account.Password = SecurePassword(account.Password);
-            account.Create();
+            if (account != null && !String.IsNullOrEmpty(account.Password))
+            {
+                account.Password = SecurePassword(account.Password);
+                account.Create();
+            }
 
             return RedirectToAction("CreateAnAccount");
         }
@@ -60,18 +62,11 @@ namespace KCD.Controllers
 
         private void CreateCookie(string userName)
         {
-            Response.Cookies.Add(new HttpCookie(ConfigurationManager.AppSettings.Get("CookieName"))
+            Response.Cookies.Add(new HttpCookie("KCD")
             {
                 Value = userName,
                 Expires = (DateTime.Now).AddMinutes(30)
             });
-        }
-
-        private string GetUserNameFromCookie()
-        {
-            var cookie = Response.Cookies.Get(ConfigurationManager.AppSettings.Get("CookieName"));
-            
-            return cookie == null ? "" : cookie.Value;
         }
     }
 }

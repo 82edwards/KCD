@@ -168,6 +168,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Properties\PublishProfiles\KCD.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\Custom\CreateAnAccount.js" />
     <Content Include="Scripts\Custom\Layout.js" />
     <Content Include="Scripts\Custom\Login.js" />
     <Content Include="Scripts\Custom\ResetPassword.js" />

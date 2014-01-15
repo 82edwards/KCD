@@ -1,17 +1,16 @@
 ﻿var passwordAttempt = 0;
 $(document).ready(function () {
-
     $('#SignIn').click(function () {
         $.ajax({
             type: "POST",
             url: "../Security/Login",
-            data: { userName: $('#UserName').val(), password: $('#Password').val() },
+            data: { userName: $('#LoginUserName').val(), password: $('#LoginPassword').val() },
             cache: false,
             complete: function (result) {
                 var test = JSON.parse(result.responseJSON);
                 if (test.Success == "True") {
                     $('#LoginBox').slideToggle(400);
-                    $('#login').text('Log Out');
+                    LoggedIn();
                 } else {
                     passwordAttempt++;
                     if (passwordAttempt == 1)
@@ -31,3 +30,18 @@ $(document).ready(function () {
         window.location.replace("../Security/CreateAnAccount");
     });
 });
+
+function LoggedIn() {
+    $('#login').hide();
+    $('#logout').show();
+    $('#LoginUserName').val('');
+    $('#LoginPassword').val('');
+    $('#LoginBox').slideToggle(400);
+}
+
+function LoggedOut() {
+    $('#login').show();
+    $('#logout').hide();
+    $('#LoginUserName').val('');
+    $('#LoginPassword').val('');
+}

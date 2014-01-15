@@ -1,12 +1,12 @@
 ﻿<table>
     <tr>
         <td>
-            @Html.TextBox("UserName", "", new { placeholder = "Username" })
+            @Html.TextBox("LoginUserName", "", new { placeholder = "Username" })
         </td>
     </tr>
     <tr>
         <td>
-            @Html.Password("Password", "", new { placeholder = "Password" })
+            @Html.Password("LoginPassword", "", new { placeholder = "Password" })
         </td>
         <td>
             @Html.ActionLink("Reset Password", "ResetPassword", "Security")
@@ -34,4 +34,3 @@
         </td>
     </tr>
 </table>
-@Scripts.Render("~/Scripts/Custom/Login.js")

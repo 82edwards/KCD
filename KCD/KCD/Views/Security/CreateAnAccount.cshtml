@@ -2,90 +2,110 @@
 @{
     ViewBag.Title = "Create An Account";
 }
+<h2>Register</h2>
 
-@using (Html.BeginForm())
-{
-    <h2>Register</h2>
+<div>
+    <table>
+        <tr>
+            <td>
+                <label>Name</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.TextBox("FirstName", "", new { placeholder = "First" })
+            </td>
+            <td>
+                @Html.TextBox("LastName", "", new { placeholder = "Last" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>User name</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.TextBox("CreateUserName", "", new { placeholder = "Username" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Password</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.Password("Password")
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>8-character minimum</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Reenter password</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.Password("PasswordConfirmation")
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Email address</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.TextBox("EmailAddress", "", new { placeholder = "someone@example.com" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Email address for sponsors</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.TextBox("EmailAddressForSponsors", "", new { placeholder = "someone@example.com" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Company</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.TextBox("Company")
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Recieve Emails</label>
+            </td>
+            <td>
+                @Html.CheckBox("CanSendEmails", true)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Contacted by Sponsers</label>
+            </td>
+            <td>
+                @Html.CheckBox("CanBeContactedBySponsers", true)
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" id="btnSave" value="Submit" />
+            </td>
+        </tr>
+    </table>
+</div>
 
-    <div>
-        <table>
-            <tr>
-                <td>
-                    <label>UserName:</label>
-                </td>
-                <td>
-                    @Html.TextBox("UserName")
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label>First Name:</label>
-                </td>
-                <td>
-                    @Html.TextBox("FirstName")
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label>Last Name:</label>
-                </td>
-                <td>
-                    @Html.TextBox("LastName")
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label>Email Address:</label>
-                </td>
-                <td>
-                    @Html.TextBox("EmailAddress")
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label>Company:</label>
-                </td>
-                <td>
-                    @Html.TextBox("Company")
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label>Recieve Emails:</label>
-                </td>
-                <td>
-                    @Html.CheckBox("CanSendEmails", true)
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label>Contacted by Sponsers:</label>
-                </td>
-                <td>
-                    @Html.CheckBox("CanBeContactedBySponsers", true)
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label>Password:</label>
-                </td>
-                <td>
-                    @Html.Password("Password")
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label>Re-Enter:</label>
-                </td>
-                <td>
-                    @Html.Password("PasswordConfirmation")
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <input type="submit" id="btnSave" value="Submit" />
-                </td>
-            </tr>
-        </table>
-    </div>
-}
+@Scripts.Render("~/Scripts/Custom/CreateAnAccount.js")
