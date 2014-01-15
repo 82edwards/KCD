@@ -4,13 +4,13 @@ $(document).ready(function () {
         $.ajax({
             type: "POST",
             url: "../Security/Login",
-            data: { userName: $('#LoginUserName').val(), password: $('#LoginPassword').val() },
+            data: { userName: $('#LoginUserName').val(), password: $('#LoginPassword').val(), persist: $('#KeepSignedIn').val() },
             cache: false,
             complete: function (result) {
                 var test = JSON.parse(result.responseJSON);
                 if (test.Success == "True") {
-                    $('#LoginBox').slideToggle(400);
                     LoggedIn();
+                    $('#LoginBox').slideToggle(400);
                 } else {
                     passwordAttempt++;
                     if (passwordAttempt == 1)
@@ -34,14 +34,6 @@ $(document).ready(function () {
 function LoggedIn() {
     $('#login').hide();
     $('#logout').show();
-    $('#LoginUserName').val('');
-    $('#LoginPassword').val('');
-    $('#LoginBox').slideToggle(400);
-}
-
-function LoggedOut() {
-    $('#login').show();
-    $('#logout').hide();
     $('#LoginUserName').val('');
     $('#LoginPassword').val('');
 }

@@ -33,15 +33,22 @@ namespace KCD.Controllers
         }
 
         [HttpPost]
-        public JsonResult Login(string userName, string password)
+        public JsonResult Login(string userName, string password, bool keepSignedIn)
         {
             password = SecurePassword(password);
             var result = Account.Authenticate(userName, password);
 
             if (result)
-                CreateCookie(userName);
+                CreateCookie(userName, keepSignedIn);
 
             return Json(@"{""Success"":""" + result + @"""}", "application/json");
+        }
+
+        [HttpPost]
+        public JsonResult Logout()
+        {
+            DeleteCookie();
+            return Json(@"{""Success"":""Success""}");
         }
 
         [HttpPost]
@@ -60,12 +67,26 @@ namespace KCD.Controllers
             return Encoding.ASCII.GetString(data);
         }
 
-        private void CreateCookie(string userName)
+        private void CreateCookie(string userName, bool keepSignedIn)
         {
+            var persistInterval = (DateTime.Now).AddMinutes(30);
+
+            if (keepSignedIn)
+                persistInterval = (DateTime.Now).AddDays(100);
+            
             Response.Cookies.Add(new HttpCookie("KCD")
             {
                 Value = userName,
-                Expires = (DateTime.Now).AddMinutes(30)
+                Expires = persistInterval
+            });
+        }
+
+        private void DeleteCookie()
+        {
+            Response.Cookies.Add(new HttpCookie("KCD")
+            {
+                Value = "",
+                Expires = (DateTime.Now).AddDays(-1d)
             });
         }
     }

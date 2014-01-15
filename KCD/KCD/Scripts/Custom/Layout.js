@@ -10,3 +10,16 @@
         LoggedOut();
     });
 });
+
+function LoggedOut() {
+    $('#login').show();
+    $('#logout').hide();
+    $('#LoginUserName').val('');
+    $('#LoginPassword').val('');
+
+    $.ajax({
+        type: "POST",
+        url: "../Security/Logout",
+        cache: false
+    });
+}
