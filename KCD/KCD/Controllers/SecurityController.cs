@@ -21,16 +21,16 @@ namespace KCD.Controllers
         }
 
         [HttpPost]
-        public JsonResult CreateAnAccount(Account account)
+        public ActionResult CreateAnAccount(Account account)
         {
-            var result = -1;
-            if (account != null && !String.IsNullOrEmpty(account.Password))
+            if (ModelState.IsValid)
             {
                 account.Password = SecurePassword(account.Password);
-                result = account.Create();
+                account.Create();
+                return RedirectToAction("Index", "Home");
             }
 
-            return Json(@"{""Success"":"""+ result + "}");
+            return View(new CreateAccount { Account = account });
         }
 
         [HttpPost]

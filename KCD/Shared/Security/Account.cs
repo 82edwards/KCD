@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.ComponentModel.DataAnnotations;
 
 namespace KcdModel.Security
 {
@@ -10,10 +11,21 @@ namespace KcdModel.Security
     {
         #region Properties
         public int Id { get; set; }
+
+        [Required(ErrorMessage = "User name is required")]
         public string UserName { get; set; }
+
+        [Required(ErrorMessage = "First name is required")]
         public string FirstName { get; set; }
+
+        [Required(ErrorMessage = "Last name is required")]
         public string LastName { get; set; }
+
+        [Required(ErrorMessage = "Password is required")]
+        [MinLength(8)]
         public string Password { get; set; }
+
+        [Required(ErrorMessage = "Email address is required")]
         public string EmailAddress { get; set; }
         public string EmailAddressForSponsors { get; set; }
         public string Company { get; set; }
@@ -54,7 +66,7 @@ namespace KcdModel.Security
                         new SqlParameter("@LastName", LastName),
                         new SqlParameter("@Password", Password),
                         new SqlParameter("@EmailAddress", EmailAddress),
-                        new SqlParameter("@EmailAddressForSponsers", EmailAddressForSponsors),
+                        new SqlParameter("@EmailAddressForSponsors", String.IsNullOrWhiteSpace(EmailAddressForSponsors) ? EmailAddress : EmailAddressForSponsors),
                         new SqlParameter("@Company", Company),
                         new SqlParameter("@CanSendEmails", CanSendEmails),
                         new SqlParameter("@CanBeContactedBySponsors", CanBeContactedBySponsors)

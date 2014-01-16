@@ -1,5 +1,4 @@
 ﻿using System.Web.Mvc;
-using KCD.ViewModel;
 
 namespace KCD.Controllers
 {
@@ -15,11 +14,6 @@ namespace KCD.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
-        }
-
-        public ActionResult CreateAnAccount()
-        {
-            return View(new CreateAccount());
         }
     }
 }
