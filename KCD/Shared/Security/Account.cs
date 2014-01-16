@@ -1,9 +1,9 @@
 ﻿using KcdModel.Helper;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Data.SqlClient;
-using System.ComponentModel.DataAnnotations;
 
 namespace KcdModel.Security
 {
@@ -25,7 +25,7 @@ namespace KcdModel.Security
         [MinLength(8)]
         public string Password { get; set; }
 
-        [Required(ErrorMessage = "Please confirm the password")]
+        [Compare("Password", ErrorMessage = "Passwords must match")]
         public string ConfirmPassword { get; set; }
 
         [Required(ErrorMessage = "Email address is required")]
