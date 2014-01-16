@@ -1,4 +1,5 @@
-﻿@model KCD.ViewModel.CreateAccount
+﻿@using System.Web.UI.WebControls
+@model KCD.ViewModel.CreateAccount
 @{
     ViewBag.Title = "Create An Account";
 }
@@ -15,10 +16,12 @@
             </tr>
             <tr>
                 <td>
-                    @Html.TextBox("FirstName", "", new {placeholder = "First"})
+                    @Html.TextBoxFor(model => model.Account.FirstName, new { placeholder = "First name" })
+                    @Html.ValidationMessageFor(model => model.Account.FirstName)
                 </td>
                 <td>
-                    @Html.TextBox("LastName", "", new {placeholder = "Last"})
+                    @Html.TextBoxFor(model => model.Account.LastName, new { placeholder = "Last name" })
+                    @Html.ValidationMessageFor(model => model.Account.LastName)
                 </td>
             </tr>
             <tr>
@@ -28,7 +31,8 @@
             </tr>
             <tr>
                 <td>
-                    @Html.TextBox("CreateUserName", "", new {placeholder = "Username"})
+                    @Html.TextBoxFor(model => model.Account.UserName, new { placeholder = "Username" })
+                    @Html.ValidationMessageFor(model => model.Account.UserName)
                 </td>
             </tr>
             <tr>
@@ -38,7 +42,8 @@
             </tr>
             <tr>
                 <td>
-                    @Html.Password("Password")
+                    @Html.PasswordFor(model => model.Account.Password)
+                    @Html.ValidationMessageFor(model => model.Account.Password)
                 </td>
             </tr>
             <tr>
@@ -63,7 +68,8 @@
             </tr>
             <tr>
                 <td>
-                    @Html.TextBox("EmailAddress", "", new {placeholder = "someone@example.com"})
+                    @Html.TextBoxFor(model => model.Account.EmailAddress, new { placeholder = "someone@example.com" })
+                    @Html.ValidationMessageFor(model => model.Account.EmailAddress)
                 </td>
             </tr>
             <tr>
@@ -73,7 +79,8 @@
             </tr>
             <tr>
                 <td>
-                    @Html.TextBox("EmailAddressForSponsors", "", new {placeholder = "someone@example.com"})
+                    @Html.TextBoxFor(model => model.Account.EmailAddressForSponsors, new { placeholder = "someone@example.com" })
+                    @Html.ValidationMessageFor(model => model.Account.EmailAddressForSponsors)
                 </td>
             </tr>
             <tr>
@@ -83,7 +90,7 @@
             </tr>
             <tr>
                 <td>
-                    @Html.TextBox("Company")
+                    @Html.TextBoxFor(model => model.Account.Company, new { placeholder = "ABC Co." })
                 </td>
             </tr>
             <tr>
@@ -91,7 +98,7 @@
                     <label>Recieve Emails</label>
                 </td>
                 <td>
-                    @Html.CheckBox("CanSendEmails", true)
+                    @Html.CheckBoxFor(model => model.Account.CanSendEmails, new { @checked = true })
                 </td>
             </tr>
             <tr>
@@ -99,7 +106,7 @@
                     <label>Contacted by Sponsors</label>
                 </td>
                 <td>
-                    @Html.CheckBox("CanBeContactedBySponsors", true)
+                    @Html.CheckBoxFor(model => model.Account.CanBeContactedBySponsors, new { @checked = true })
                 </td>
             </tr>
             <tr>
@@ -110,4 +117,3 @@
         </table>
     </div>
 }
-@*@Scripts.Render("~/Scripts/Custom/CreateAnAccount.js")*@
