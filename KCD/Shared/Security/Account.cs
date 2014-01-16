@@ -25,6 +25,9 @@ namespace KcdModel.Security
         [MinLength(8)]
         public string Password { get; set; }
 
+        [Required(ErrorMessage = "Please confirm the password")]
+        public string ConfirmPassword { get; set; }
+
         [Required(ErrorMessage = "Email address is required")]
         public string EmailAddress { get; set; }
         public string EmailAddressForSponsors { get; set; }

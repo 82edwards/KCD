@@ -23,7 +23,7 @@ namespace KCD.Controllers
         [HttpPost]
         public ActionResult CreateAnAccount(Account account)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && account.Password == account.ConfirmPassword)
             {
                 account.Password = SecurePassword(account.Password);
                 account.Create();
