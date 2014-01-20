@@ -30,7 +30,7 @@ namespace KcdModel.Security
 
         [Required(ErrorMessage = "Email address is required")]
         public string EmailAddress { get; set; }
-        public string EmailAddressForSponsors { get; set; }
+        public string SharedEmailAddress { get; set; }
         public string Company { get; set; }
         public bool CanSendEmails { get; set; }
         public bool CanBeContactedBySponsors { get; set; }
@@ -43,7 +43,7 @@ namespace KcdModel.Security
             CanSendEmails = Convert.ToBoolean(dr["CanSendEmails"]);
             Company = Convert.ToString(dr["Company"]);
             EmailAddress = Convert.ToString(dr["EmailAddress"]);
-            EmailAddressForSponsors = Convert.ToString(dr["EmailAddressForSponsors"]);
+            SharedEmailAddress = Convert.ToString(dr["SharedEmailAddress"]);
             FirstName = Convert.ToString(dr["FirstName "]);
             LastName = Convert.ToString(dr["LastName"]);
             PhoneNumbers = new List<PhoneNumber>();
@@ -69,7 +69,7 @@ namespace KcdModel.Security
                         new SqlParameter("@LastName", LastName),
                         new SqlParameter("@Password", Password),
                         new SqlParameter("@EmailAddress", EmailAddress),
-                        new SqlParameter("@EmailAddressForSponsors", String.IsNullOrWhiteSpace(EmailAddressForSponsors) ? EmailAddress : EmailAddressForSponsors),
+                        new SqlParameter("@SharedEmailAddress", String.IsNullOrWhiteSpace(SharedEmailAddress) ? EmailAddress : SharedEmailAddress),
                         new SqlParameter("@Company", Company),
                         new SqlParameter("@CanSendEmails", CanSendEmails),
                         new SqlParameter("@CanBeContactedBySponsors", CanBeContactedBySponsors)
@@ -94,7 +94,7 @@ namespace KcdModel.Security
                     new SqlParameter("@LastName", LastName),
                     new SqlParameter("@Password", Password),
                     new SqlParameter("@EmailAddress", EmailAddress),
-                    new SqlParameter("@EmailAddressForSponsors", EmailAddressForSponsors),
+                    new SqlParameter("@SharedEmailAddress", SharedEmailAddress),
                     new SqlParameter("@Company", Company),
                     new SqlParameter("@CanSendEmails", CanSendEmails),
                     new SqlParameter("@CanBeContactedBySponsors", CanBeContactedBySponsors)

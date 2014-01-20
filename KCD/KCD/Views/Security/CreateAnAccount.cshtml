@@ -1,5 +1,4 @@
-﻿@using System.Web.UI.WebControls
-@model KCD.ViewModel.CreateAccount
+﻿@model KCD.ViewModel.CreateAccount
 @{
     ViewBag.Title = "Create An Account";
 }
@@ -62,7 +61,7 @@
             </tr>
             <tr>
                 <td>
-                    @Html.Password("PasswordConfirmation")
+                    @Html.PasswordFor(model => model.Account.ConfirmPassword)
                 </td>
                 <td>
                     @Html.ValidationMessageFor(model => model.Account.ConfirmPassword)
@@ -83,15 +82,15 @@
             </tr>
             <tr>
                 <td>
-                    <label>Email address for sponsors</label>
+                    <label>Shared Email Address</label>
                 </td>
             </tr>
             <tr>
                 <td>
-                    @Html.TextBoxFor(model => model.Account.EmailAddressForSponsors, new { placeholder = "someone@example.com" })
+                    @Html.TextBoxFor(model => model.Account.SharedEmailAddress, new { placeholder = "someone@example.com" })
                 </td>
                 <td>
-                    @Html.ValidationMessageFor(model => model.Account.EmailAddressForSponsors)
+                    @Html.ValidationMessageFor(model => model.Account.SharedEmailAddress)
                 </td>
             </tr>
             <tr>
